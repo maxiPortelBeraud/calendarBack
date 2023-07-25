@@ -8,7 +8,7 @@ const getEvents = async (req, res = response) => {
     res.status(200).json({
       ok: true,
       msg: "getEvents",
-      data: events,
+      info: events,
     });
   } catch (error) {
     console.error(error);
@@ -21,7 +21,7 @@ const createEvent = async (req, res = response) => {
   try {
     event.user = req.uid;
     const eventCreated = await event.save();
-    res.status(200).json({ ok: true, msg: "CreatedEvent", data: eventCreated });
+    res.status(200).json({ ok: true, msg: "CreatedEvent", info: eventCreated });
   } catch (error) {
     console.error(error);
     res
@@ -53,7 +53,7 @@ const updateEvent = async (req, res = response) => {
 
     res
       .status(200)
-      .json({ ok: true, msg: `Event ${id} updated`, data: eventUpdated });
+      .json({ ok: true, msg: `Event ${id} updated`, info: eventUpdated });
   } catch (error) {
     console.error(error);
     res
@@ -78,7 +78,7 @@ const deleteEvent = async (req, res) => {
     res.status(200).json({
       ok: true,
       msg: "DeletedEvent",
-      data: `Event ${id} has been deleted`,
+      info: `Event ${id} has been deleted`,
     });
   } catch (error) {
     console.error(error);
